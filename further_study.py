@@ -16,7 +16,15 @@ def custom_len(input_list):
 
     """
 
-    return 0
+    status = True
+    count = 0                           # example!! [1, 2]
+    while status:                       # status = True
+        try:
+            test_var = input_list[count]    # count = 2, input_list[2] = ERROR, test_var = 2
+            count += 1                      # count = 2
+        except IndexError:
+            status = False
+    return count
 
 
 # For the next four exercises, you'll need to be clever and think about ways
