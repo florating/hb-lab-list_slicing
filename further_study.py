@@ -1,6 +1,6 @@
 """Custom implementations of several standard Python list methods."""
 
-from list_operations import *
+# from list_operations import *
 
 
 def custom_len(input_list):
@@ -20,7 +20,7 @@ def custom_len(input_list):
     count = 0                           # example!! [1, 2]
     while status:                       # status = True
         try:
-            test_var = input_list[count]    # count = 2, input_list[2] = ERROR, test_var = 2
+            _ = input_list[count]    # count = 2, input_list[2] = ERROR, test_var = 2
             count += 1                      # count = 2
         except IndexError:
             status = False
@@ -51,9 +51,8 @@ def custom_append(input_list, value):
         True
 
     """
-
-    input_list[-1:-1] = [input_list[-1]]
-    input_list[-1] = value
+    length = custom_len(input_list)
+    input_list[length:length] = [value]
 
 
 def custom_extend(input_list, second_list):
@@ -72,8 +71,8 @@ def custom_extend(input_list, second_list):
 
     """
 
-    input_list[-1:-1] = list([input_list[-1]]) * 2
-    input_list[-2:] = second_list
+    length = custom_len(input_list)
+    input_list[length:length] = second_list
 
 
 def custom_insert(input_list, index, value):
@@ -112,12 +111,7 @@ def custom_remove(input_list, value):
 
     i = custom_index(input_list, value)
     if type(i) == int:
-        if i + 1 >= custom_len(input_list):
-            input_list[i:] = []
-            return None
         input_list[i:i+1] = []
-        return None
-
 
 
 def custom_pop(input_list):
